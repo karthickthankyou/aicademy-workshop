@@ -1,0 +1,71 @@
+{
+  "title": "Social Justice: Insights from Dr. B.R. Ambedkar",
+  "description": "This course explores the concept of social justice through the lens of Dr. B.R. Ambedkar's writings and philosophy. It covers key principles of equality, liberty, fraternity, and human rights that Ambedkar advocated for in his fight against caste-based discrimination in India.",
+  "published": true,
+  "chapters": [
+    {
+      "title": "Understanding Ambedkar's Notion of Social Justice",
+      "content": "Dr. B.R. Ambedkar's concept of social justice was based on the principles of liberty, equality and fraternity for all human beings. He fought against the caste system in India and advocated for the rights of the oppressed and marginalized communities, particularly the 'untouchables' or Dalits. Ambedkar believed that social justice could only be achieved by ensuring equal rights and opportunities for all, irrespective of caste, religion or social status.",
+      "questions": [
+        {
+          "question": "What were the key principles of Ambedkar's concept of social justice?",
+          "answer": "The key principles of Ambedkar's concept of social justice were liberty, equality and fraternity for all human beings.",
+          "explanation": "Ambedkar believed that true social justice could only be achieved when every individual had access to equal rights and opportunities, without any discrimination based on caste, religion or social status."
+        },
+        {
+          "question": "Which community did Ambedkar particularly fight for the rights of?",
+          "answer": "Ambedkar particularly fought for the rights of the 'untouchables' or Dalits, who faced severe discrimination and oppression under the caste system in India.",
+          "explanation": "As someone who himself belonged to the Dalit community, Ambedkar experienced caste-based discrimination firsthand and dedicated his life to the upliftment and empowerment of oppressed communities."
+        }
+      ]
+    },
+    {
+      "title": "Ambedkar's Critique of the Caste System",
+      "content": "Ambedkar was a vocal critic of the Hindu caste system, which he saw as the root cause of social injustice and inequality in India. He argued that the caste system perpetuated a hierarchical social order that denied basic human rights and dignity to those at the bottom of the hierarchy. Ambedkar rejected religious justifications for the caste system and advocated for its complete annihilation.",
+      "questions": [
+        {
+          "question": "What did Ambedkar see as the root cause of social injustice in India?",
+          "answer": "Ambedkar saw the Hindu caste system as the root cause of social injustice and inequality in India.",
+          "explanation": "Ambedkar argued that the caste system created a hierarchical social order that denied basic rights and dignity to those at the bottom, particularly the 'untouchables' or Dalits."
+        },
+        {
+          "question": "Did Ambedkar accept religious justifications for the caste system?",
+          "answer": "No, Ambedkar rejected religious justifications for the caste system and advocated for its complete annihilation.",
+          "explanation": "Ambedkar believed that the caste system had no moral or religious basis and was a tool for oppression and exploitation of the marginalized communities."
+        }
+      ]
+    },
+    {
+      "title": "Ambedkar's Vision of a Just Society",
+      "content": "Ambedkar envisioned a just society based on the principles of equality, liberty and fraternity. He believed that social justice could only be achieved through a combination of legal safeguards, affirmative action policies and social reforms aimed at uplifting the oppressed communities. Ambedkar played a key role in drafting India's constitution, which enshrined these principles and provided for reservation policies for the marginalized communities.",
+      "questions": [
+        {
+          "question": "What were the key principles of Ambedkar's vision of a just society?",
+          "answer": "The key principles of Ambedkar's vision of a just society were equality, liberty and fraternity.",
+          "explanation": "Ambedkar believed that a truly just society must ensure equal rights, freedoms and opportunities for all its members, regardless of their caste, religion or social status."
+        },
+        {
+          "question": "What role did Ambedkar play in promoting social justice through India's constitution?",
+          "answer": "Ambedkar played a key role in drafting India's constitution, which enshrined the principles of equality, liberty and fraternity, and provided for reservation policies for the marginalized communities.",
+          "explanation": "As the chairman of the drafting committee of India's constitution, Ambedkar ensured that the constitution included strong safeguards against discrimination and provisions for affirmative action to uplift the oppressed communities."
+        }
+      ]
+    },
+    {
+      "title": "Ambedkar's Legacy and Relevance Today",
+      "content": "Ambedkar's ideas and philosophy continue to be relevant today, as issues of social justice, equality and discrimination persist in India and around the world. His critique of the caste system and advocacy for the rights of the marginalized communities have inspired many social movements and anti-discrimination laws. Ambedkar's vision of a just and equitable society based on the principles of liberty, equality and fraternity remains an important goal to strive for.",
+      "questions": [
+        {
+          "question": "Why are Ambedkar's ideas still relevant today?",
+          "answer": "Ambedkar's ideas are still relevant today because issues of social justice, equality and discrimination persist in India and around the world.",
+          "explanation": "Despite progress made since Ambedkar's time, marginalized communities continue to face systemic discrimination and inequalities in various spheres of life, making Ambedkar's philosophy and vision of social justice as important as ever."
+        },
+        {
+          "question": "What impact has Ambedkar's work had on social movements and laws?",
+          "answer": "Ambedkar's critique of the caste system and advocacy for the rights of marginalized communities have inspired many social movements and anti-discrimination laws in India and beyond.",
+          "explanation": "Ambedkar's ideas have provided a foundation for Dalit activism, affirmative action policies, and legal safeguards against caste-based discrimination in India, and have also influenced social justice movements in other parts of the world."
+        }
+      ]
+    }
+  ]
+}

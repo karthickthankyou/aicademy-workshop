@@ -15,3 +15,45 @@ export const useDialogState = (defaultState = false) => {
 
   return [open, setOpen] as const
 }
+
+export const useCloudinaryUpload = () => {
+  const [loading, setLoading] = useState(false)
+
+  const upload = async (file: File) => {
+    if (!file) {
+      return null
+    }
+    setLoading(true)
+
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+      formData.append(
+        'upload_preset',
+        process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || '',
+      )
+
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+        {
+          method: 'POST',
+          body: formData,
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error('Upload failed')
+      }
+      const data = await response.json()
+      const imageUrl = data.secure_url
+      return imageUrl
+    } catch (error) {
+      console.error('Error uploading file:', error)
+      throw new Error('Upload failed')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return { upload, loading }
+}
