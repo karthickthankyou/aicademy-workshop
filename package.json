@@ -12,7 +12,8 @@
     "format:check": "pnpm format --check",
     "format:write": "pnpm format --write",
     "validate": "pnpm format:write && pnpm lint && pnpm tsc && pnpm build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cloc": "npx cloc --exclude-dir=node_modules,dist,build,pnpm-lock.yaml,package.json,@generated,generated,.next ."
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.9",

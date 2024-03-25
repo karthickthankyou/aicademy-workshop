@@ -22,13 +22,7 @@ export const CourseCardSimple = ({ course }: ICourseCardSimpleProps) => {
         src={course.image || '/user.jpg'}
         className="object-cover aspect-square rounded"
       />
-      <div
-        className={cn(
-          'text-lg font-medium group-hover:underline underline-offset-4 ',
-        )}
-      >
-        {course.title}
-      </div>
+      <div className={cn('mt-2 font-medium')}>{course.title}</div>
 
       <DisplayDate dateString={course.createdAt} className="mt-2" />
       <Badge variant={'secondary'}>
