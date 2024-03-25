@@ -2,6 +2,7 @@ import { Role } from '@/util/types'
 import { auth } from '@clerk/nextjs'
 import { TRPCError, initTRPC } from '@trpc/server'
 import { authorizeUser } from './util'
+import { prisma } from '@/db'
 
 export const createTRPCContext = async (opts: { headers: Headers }) => {
   const session = auth()
