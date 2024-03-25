@@ -18,10 +18,14 @@ model User {
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    name    String
-    image   String?
-    Admin   Admin?
-    Student Student?
+    name          String
+    image         String?
+    Admin         Admin?
+    Student       Student?
+    CreditBalance CreditBalance?
+    Transactions  Transaction[]
+
+    currentModel AIModel @default(gpt_4)
 }
 
 model Admin {
@@ -31,6 +35,8 @@ model Admin {
     updatedAt DateTime @updatedAt
 
     User User @relation(fields: [id], references: [id])
+
+    Courses Course[]
 }
 
 model Student {
@@ -39,4 +45,169 @@ model Student {
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    Tests         Test[]
+    Conversations Conversation[]
+}
+
+model Course {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    title       String   @unique
+    description String?
+    image       String?
+    published   Boolean? @default(false)
+
+    Chapters Chapter[]
+
+    Admin    Admin  @relation(fields: [adminUid], references: [id])
+    adminUid String
+
+    Tests Test[]
+}
+
+model Chapter {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    title   String
+    content String
+
+    courseId      Int
+    Course        Course         @relation(fields: [courseId], references: [id])
+    Questions     Question[]
+    Conversations Conversation[]
+}
+
+model Conversation {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    chapterId Int
+    Chapter   Chapter @relation(fields: [chapterId], references: [id])
+
+    Student    Student   @relation(fields: [studentUid], references: [id])
+    studentUid String
+    Messages   Message[]
+
+    @@unique([chapterId, studentUid])
+}
+
+model Message {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    content String
+    sender  SenderType
+
+    timestamp DateTime @default(now())
+
+    Conversation   Conversation @relation(fields: [conversationId], references: [id])
+    conversationId Int
+}
+
+enum SenderType {
+    STUDENT
+    AI
+}
+
+model Question {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    question      String
+    Answer        Answer?
+    chapterId     Int
+    Chapter       Chapter        @relation(fields: [chapterId], references: [id])
+    TestQuestions TestQuestion[]
+}
+
+model Answer {
+    id          Int      @id @default(autoincrement())
+    answer      String
+    explanation String?
+    questionId  Int      @unique
+    Question    Question @relation(fields: [questionId], references: [id])
+}
+
+model Test {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    courseId      Int
+    Course        Course         @relation(fields: [courseId], references: [id])
+    TestQuestions TestQuestion[]
+
+    aiTotalScore Int?
+    Student      Student @relation(fields: [studentUid], references: [id])
+    studentUid   String
+}
+
+model TestQuestion {
+    id            Int    @id @default(autoincrement())
+    studentAnswer String
+
+    aiScore    Int?
+    aiFeedback String?
+
+    testId     Int
+    Test       Test     @relation(fields: [testId], references: [id])
+    questionId Int
+    Question   Question @relation(fields: [questionId], references: [id])
+}
+
+model CreditBalance {
+    id        Int      @id @default(autoincrement())
+    userId    String   @unique
+    balance   Float    @default(0)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+    Transactions Transaction[]
+}
+
+model Transaction {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+
+    userId String
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    notes            String?
+    amount           Float
+    promptTokens     Int     @default(0)
+    completionTokens Int     @default(0)
+    creditBalanceId  Int
+
+    model AIModel?
+
+    CreditBalance CreditBalance @relation(fields: [creditBalanceId], references: [id], onDelete: Cascade)
+}
+
+enum AIModel {
+    gpt_4_0125_preview
+    gpt_4_turbo_preview
+    gpt_4_1106_preview
+    gpt_4_vision_preview
+    gpt_4_1106_vision_preview
+    gpt_4
+    gpt_4_0613
+    gpt_4_32k
+    gpt_4_32k_0613
+
+    gpt_3__5_turbo_0125
+    gpt_3__5_turbo
+    gpt_3__5_turbo_1106
+    gpt_3__5_turbo_instruct
+    gpt_3__5_turbo_16k
+    gpt_3__5_turbo_0613
+    gpt_3__5_turbo_16k_0613
 }
