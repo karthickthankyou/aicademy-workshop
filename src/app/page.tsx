@@ -1,5 +1,10 @@
-import Image from 'next/image'
+import { UserButton } from '@clerk/nextjs'
 
-export default function Home() {
-  return <main>hello world</main>
+export default async function Home() {
+  return (
+    <main>
+      hello world!!!
+      <UserButton />
+    </main>
+  )
 }
