@@ -1,4 +1,5 @@
-import { trpcServer } from '@/trpc/clients/server'
+'use client'
+
 import {
   Table,
   TableBody,
@@ -10,10 +11,12 @@ import {
 } from '../atoms/table'
 import { format } from 'date-fns'
 import { cn } from '@/util/styles'
+import { trpcClient } from '@/trpc/clients/client'
+import { getModelName } from '@/util'
 
-export const ListTransactions = async () => {
-  const myCreditTransactions =
-    await trpcServer.creditBalance.myCreditTransactions.query()
+export const ListTransactions = () => {
+  const { data: myCreditTransactions } =
+    trpcClient.creditBalance.myCreditTransactions.useQuery()
 
   return (
     <Table>
@@ -30,7 +33,7 @@ export const ListTransactions = async () => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {myCreditTransactions.map(
+        {myCreditTransactions?.map(
           ({
             id,
             amount,
@@ -51,7 +54,7 @@ export const ListTransactions = async () => {
               </TableCell>
               <TableCell className="max-w-xs">{notes}</TableCell>
               <TableCell className="max-w-xs text-center">
-                {model || '-'}
+                {getModelName(model) || '-'}
               </TableCell>
               <TableCell className="max-w-xs text-right">
                 {promptTokens}
@@ -66,7 +69,7 @@ export const ListTransactions = async () => {
                   amount > 0 ? 'text-green-700' : 'text-red-700',
                 )}
               >
-                {amount}
+                {amount.toFixed(4)}
               </TableCell>
             </TableRow>
           ),

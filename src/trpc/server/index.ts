@@ -3,13 +3,16 @@ import { auth } from '@clerk/nextjs'
 import { TRPCError, initTRPC } from '@trpc/server'
 import { authorizeUser } from './util'
 import { prisma } from '@/db'
+import { AIService } from '@/ai/ai.service'
 
 export const createTRPCContext = async (opts: { headers: Headers }) => {
   const session = auth()
+  const ai = new AIService()
 
   return {
     db: prisma,
     session,
+    ai,
     ...opts,
   }
 }

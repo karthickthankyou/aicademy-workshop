@@ -28,3 +28,8 @@ export const schemaPayment = z.object({
   userId: z.string(),
   creditsCount: z.coerce.number().min(1),
 })
+
+export const schemaDoubt = z.object({
+  chapterId: z.number(),
+  doubt: z.string(),
+})

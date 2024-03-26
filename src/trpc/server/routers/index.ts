@@ -6,6 +6,7 @@ import { chapterRoutes } from './chapters'
 import { aiModelRoutes } from './aiModel'
 import { stripeRoutes } from './stripe'
 import { creditBalanceRoutes } from './creditBalance'
+import { studentRoutes } from './students'
 
 export const appRouter = createTRPCRouter({
   admins: adminRoutes,
@@ -14,6 +15,7 @@ export const appRouter = createTRPCRouter({
   aiModel: aiModelRoutes,
   stripe: stripeRoutes,
   creditBalance: creditBalanceRoutes,
+  students: studentRoutes,
 })
 
 export type AppRouter = typeof appRouter
