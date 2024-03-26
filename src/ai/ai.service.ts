@@ -70,6 +70,7 @@ export class AIService {
         sender: 'AI',
         content: answer,
         conversationId: conversationId,
+        model,
       },
     })
     // Add transaction

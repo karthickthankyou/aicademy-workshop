@@ -107,6 +107,8 @@ model Message {
 
     timestamp DateTime @default(now())
 
+    model AIModel?
+
     Conversation   Conversation @relation(fields: [conversationId], references: [id])
     conversationId Int
 }

@@ -10,6 +10,7 @@ import { AlertBox } from '../molecules/AlertBox'
 import { Input } from '../atoms/input'
 import { Button } from '../atoms/button'
 import { TextArea } from '../atoms/textArea'
+import { getModelName } from '@/util'
 
 export const AIConversations = ({
   chapter,
@@ -30,7 +31,7 @@ export const AIConversations = ({
 
   const { mutateAsync: askDoubt, isLoading } =
     trpcClient.chapters.doubt.useMutation({
-      onSuccess(data, variables, context) {
+      onSuccess() {
         utils.chapters.messages.invalidate()
         reset()
       },
@@ -51,8 +52,15 @@ export const AIConversations = ({
             <div className="p-3">
               {message.sender === 'STUDENT' ? 'You' : 'AI'}
             </div>
-            <div className="max-w-lg p-3 whitespace-pre-wrap bg-white rounded-lg shadow-lg">
-              {message.content}
+            <div>
+              <div className="max-w-lg p-3 whitespace-pre-wrap bg-white rounded-lg shadow-lg">
+                {message.content}
+              </div>
+              {message.model ? (
+                <div className="text-gray-600 text-sm mt-1">
+                  {getModelName(message.model)}
+                </div>
+              ) : null}
             </div>
           </div>
         ))
