@@ -23,3 +23,8 @@ export const formSchemaCreateCourse = z.object({
   image: z.any().optional(),
   chapters: z.array(formSchemaCreateChapter),
 })
+
+export const schemaPayment = z.object({
+  userId: z.string(),
+  creditsCount: z.coerce.number().min(1),
+})
