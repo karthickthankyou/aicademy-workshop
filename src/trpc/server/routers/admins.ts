@@ -3,6 +3,13 @@ import { createTRPCRouter, protectedProcedure } from '..'
 import { TRPCError } from '@trpc/server'
 
 export const adminRoutes = createTRPCRouter({
+  dashboard: protectedProcedure('admin').query(async ({ ctx }) => {
+    const courseCount = await ctx.db.course.count()
+    const studentCount = await ctx.db.student.count()
+    const adminCount = await ctx.db.admin.count()
+
+    return { courseCount, studentCount, adminCount }
+  }),
   adminMe: protectedProcedure().query(({ ctx }) => {
     return ctx.db.admin.findUnique({
       where: { id: ctx.userId },

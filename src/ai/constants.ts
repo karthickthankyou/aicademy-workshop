@@ -1,9 +1,12 @@
-import { $Enums } from '@prisma/client'
+import { $Enums, AIModel } from '@prisma/client'
 
 interface ModelCosts {
   promptTokenCost: number
   completionTokenCost: number
 }
+
+export const EXAM_MODEL: AIModel = 'gpt_4'
+export const MARKS_PER_QUESTION = 20
 
 export const MODEL_COSTS: Record<$Enums.AIModel, ModelCosts> = {
   [$Enums.AIModel.gpt_4_0125_preview]: {

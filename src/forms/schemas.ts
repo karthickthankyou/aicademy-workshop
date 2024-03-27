@@ -33,3 +33,14 @@ export const schemaDoubt = z.object({
   chapterId: z.number(),
   doubt: z.string(),
 })
+
+export const schemaSubmitTest = z.object({
+  testId: z.number(),
+  answers: z.array(
+    z.object({
+      id: z.number(),
+      question: z.string(),
+      userAnswer: z.string().optional().nullable(),
+    }),
+  ),
+})
