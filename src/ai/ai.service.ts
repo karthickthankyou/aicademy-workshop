@@ -178,9 +178,21 @@ export class AIService {
       notes: `Test`,
     })
 
-    const result = JSON.parse(
-      responseMessage.tool_calls?.[0].function.arguments || '',
-    )
+    let result: {
+      testResults: { questionId: string; feedback: string; marks: number }[]
+    } = {
+      testResults: [],
+    }
+    try {
+      const functionArguments =
+        responseMessage.tool_calls?.[0].function.arguments
+      if (functionArguments) {
+        result = JSON.parse(functionArguments)
+      }
+    } catch (error) {
+      console.error('Error parsing JSON:', error)
+      // Handle the error or provide a default value for result
+    }
 
     console.log('result', result)
     return result.testResults

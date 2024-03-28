@@ -33,7 +33,7 @@ export const ImagePreview = ({
 
   if (src) {
     return (
-      <div className="grid relative items-center justify-center h-full grid-cols-1 grid-rows-1 aspect-square">
+      <div className="grid relative w-full items-center justify-center h-full grid-cols-1 grid-rows-1 aspect-square">
         <Image
           src={imageUrl || '/user.jpg'}
           alt=""
